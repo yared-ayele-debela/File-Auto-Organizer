@@ -1,0 +1,218 @@
+# ==============================================================================
+# File Auto-Organizer Configuration
+# ==============================================================================
+
+# Directory to monitor for new/modified files (supports ~ and environment variables)
+watch_directory: "~/Downloads"
+
+# If true, watcher will process subdirectories recursively.
+# Recommended: false (to avoid recursive loops with destination folders)
+recursive: false
+
+# Conflict resolution strategy when a destination file already exists:
+#   - numeric: appends " (1)", " (2)", etc. e.g. report (1).pdf
+#   - timestamp: appends "_YYYYMMDD_HHMMSS" e.g. report_20260904_120000.pdf
+#   - skip: skips moving the file and logs a warning
+conflict_resolution: "numeric"
+
+# Partial download & file stability guard
+stability:
+  # Seconds to wait between file size checks to confirm write completion
+  check_interval_seconds: 1.0
+  # Number of consecutive identical size checks required before moving
+  min_stable_checks: 2
+  # Maximum total seconds to wait before giving up on an unstable file
+  max_wait_seconds: 30
+  # Extensions indicating active downloads/temporary writes (case-insensitive)
+  # Events for these files are ignored until renamed to the final filename
+  ignored_extensions:
+    - ".crdownload"
+    - ".part"
+    - ".tmp"
+    - ".temp"
+    - ".download"
+    - ".aria2"
+    - ".partial"
+    - ".lock"
+
+# Ignore hidden files (names starting with a dot, e.g. .DS_Store, .stversions)
+ignore_hidden: true
+
+# Action for files that don't match any category extension:
+#   - "leave": keep the file in the watch directory without moving
+#   - "Other": move into an "Other" subfolder
+unmatched_category: "leave"
+
+# Logging configuration
+logging:
+  # Rotating log file location (~ and $HOME expanded)
+  file: "~/.local/state/file-organizer/file-organizer.log"
+  # Max size in bytes before rotating (default: 10 MB)
+  max_bytes: 10485760
+  # Number of backup log files to retain
+  backup_count: 5
+  # Minimum logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+
+# Category mappings: logical group name -> folder path & file extensions
+# Destination folders can be relative to watch_directory (e.g. "PDFs") or absolute (e.g. "~/Documents/PDFs")
+categories:
+  PDFs:
+    folder: "PDFs"
+    extensions:
+      - ".pdf"
+
+  Documents:
+    folder: "Documents"
+    extensions:
+      - ".doc"
+      - ".docx"
+      - ".odt"
+      - ".rtf"
+      - ".txt"
+      - ".md"
+      - ".tex"
+      - ".epub"
+      - ".pages"
+      - ".djvu"
+      - ".rst"
+      - ".wps"
+
+  Spreadsheets:
+    folder: "Spreadsheets"
+    extensions:
+      - ".xlsx"
+      - ".xls"
+      - ".csv"
+      - ".tsv"
+      - ".ods"
+      - ".numbers"
+
+  Presentations:
+    folder: "Presentations"
+    extensions:
+      - ".pptx"
+      - ".ppt"
+      - ".odp"
+      - ".key"
+
+  Images:
+    folder: "Images"
+    extensions:
+      - ".jpg"
+      - ".jpeg"
+      - ".png"
+      - ".gif"
+      - ".svg"
+      - ".webp"
+      - ".bmp"
+      - ".tiff"
+      - ".tif"
+      - ".ico"
+      - ".heic"
+      - ".heif"
+      - ".psd"
+      - ".ai"
+      - ".raw"
+      - ".cr2"
+      - ".nef"
+      - ".arw"
+
+  Videos:
+    folder: "Videos"
+    extensions:
+      - ".mp4"
+      - ".mkv"
+      - ".avi"
+      - ".mov"
+      - ".flv"
+      - ".wmv"
+      - ".webm"
+      - ".m4v"
+      - ".mpg"
+      - ".mpeg"
+      - ".3gp"
+      - ".ts"
+
+  Audio:
+    folder: "Audio"
+    extensions:
+      - ".mp3"
+      - ".wav"
+      - ".ogg"
+      - ".flac"
+      - ".aac"
+      - ".m4a"
+      - ".wma"
+      - ".opus"
+      - ".mid"
+      - ".midi"
+      - ".alac"
+
+  Archives:
+    folder: "Archives"
+    extensions:
+      - ".zip"
+      - ".tar.gz"
+      - ".tar.bz2"
+      - ".tar.xz"
+      - ".tar.zst"
+      - ".tgz"
+      - ".tbz2"
+      - ".txz"
+      - ".tar"
+      - ".gz"
+      - ".bz2"
+      - ".xz"
+      - ".zst"
+      - ".7z"
+      - ".rar"
+      - ".iso"
+      - ".dmg"
+      - ".cab"
+
+  Installers:
+    folder: "Installers"
+    extensions:
+      - ".deb"
+      - ".appimage"
+      - ".rpm"
+      - ".sh"
+      - ".run"
+      - ".flatpakref"
+      - ".flatpak"
+      - ".apk"
+      - ".exe"
+      - ".msi"
+
+  Code:
+    folder: "Code"
+    extensions:
+      - ".py"
+      - ".js"
+      - ".ts"
+      - ".jsx"
+      - ".tsx"
+      - ".html"
+      - ".htm"
+      - ".css"
+      - ".scss"
+      - ".json"
+      - ".yaml"
+      - ".yml"
+      - ".xml"
+      - ".c"
+      - ".cpp"
+      - ".h"
+      - ".hpp"
+      - ".rs"
+      - ".go"
+      - ".java"
+      - ".kt"
+      - ".sql"
+      - ".php"
+      - ".rb"
+      - ".lua"
+      - ".swift"
+      - ".toml"
+      - ".dockerfile"

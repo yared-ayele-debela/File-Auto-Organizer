@@ -1,0 +1,19 @@
+[Unit]
+Description=File Auto-Organizer Daemon (Downloads Sorter)
+Documentation=https://github.com/developer/file-organizer
+After=network.target
+
+[Service]
+Type=simple
+# Points to the virtual environment python created by install.sh
+ExecStart=%h/.local/share/file-organizer/venv/bin/python3 -m file_organizer watch
+# SIGHUP reloads configuration without restarting the watcher process
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
