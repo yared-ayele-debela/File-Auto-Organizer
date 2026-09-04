@@ -82,15 +82,30 @@ def get_recent_logs(lines: int = 15) -> str:
         return f"Error reading logs: {e}"
 
 
+RED_BOLD = "\033[1;91m"
+YELLOW_BOLD = "\033[1;93m"
+RESET = "\033[0m"
+
+ASCII_ART = r"""
+ ______ _ _       ____                        _              
+|  ____(_) |     / __ \                      (_)             
+| |__   _| | ___| |  | |_ __ __ _  __ _ _ __  _ _______ _ __ 
+|  __| | | |/ _ \ |  | | '__/ _` |/ _` | '_ \| |_  / _ \ '__|
+| |    | | |  __/ |__| | | | (_| | (_| | | | | |/ /  __/ |   
+|_|    |_|_|\___|\____/|_|  \__, |\__,_|_| |_|_/___\___|_|   
+                             __/ |                           
+                            |___/                            """
+
+STATUS_BANNER = f"{RED_BOLD}{ASCII_ART}{RESET}\n            {YELLOW_BOLD}[ FILE AUTO-ORGANIZER STATUS ]{RESET}\n"
+
+
 def display_status(config: AppConfig) -> None:
     """Print an end-user readable status overview."""
     info = get_service_status()
     active_badge = "\033[32m● ACTIVE\033[0m" if info["active"] else "\033[31m○ INACTIVE\033[0m"
     enabled_badge = "\033[32mENABLED\033[0m" if info["enabled"] else "\033[33mDISABLED\033[0m"
 
-    print("\n" + "=" * 60)
-    print("           FILE AUTO-ORGANIZER STATUS")
-    print("=" * 60)
+    print(STATUS_BANNER)
     print(f"Service Unit:     {SERVICE_NAME} ({active_badge} / {enabled_badge})")
     print(f"Unit File:        {info['unit_path']} (Exists: {info['installed']})")
     print(f"Config Source:    {config.config_source or 'Default built-in'}")

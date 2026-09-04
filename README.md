@@ -1,5 +1,17 @@
 # File Auto-Organizer for Ubuntu Linux
 
+```text
+ ______ _ _       ____                        _              
+|  ____(_) |     / __ \                      (_)             
+| |__   _| | ___| |  | |_ __ __ _  __ _ _ __  _ _______ _ __ 
+|  __| | | |/ _ \ |  | | '__/ _` |/ _` | '_ \| |_  / _ \ '__|
+| |    | | |  __/ |__| | | | (_| | (_| | | | | |/ /  __/ |   
+|_|    |_|_|\___|\____/|_|  \__, |\__,_|_| |_|_/___\___|_|   
+                             __/ |                           
+                            |___/                            
+            [ FILE AUTO-ORGANIZER STATUS ]
+```
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![systemd](https://img.shields.io/badge/systemd-user%20service-brightgreen.svg)](https://systemd.io/)
@@ -111,7 +123,39 @@ The script will:
 ```bash
 # Check service status, active configuration, and recent logs
 file-organizer status
+```
 
+Output:
+```text
+ ______ _ _       ____                        _              
+|  ____(_) |     / __ \                      (_)             
+| |__   _| | ___| |  | |_ __ __ _  __ _ _ __  _ _______ _ __ 
+|  __| | | |/ _ \ |  | | '__/ _` |/ _` | '_ \| |_  / _ \ '__|
+| |    | | |  __/ |__| | | | (_| | (_| | | | | |/ /  __/ |   
+|_|    |_|_|\___|\____/|_|  \__, |\__,_|_| |_|_/___\___|_|   
+                             __/ |                           
+                            |___/                            
+            [ FILE AUTO-ORGANIZER STATUS ]
+
+Service Unit:     file-organizer.service (● ACTIVE / ENABLED)
+Unit File:        ~/.config/systemd/user/file-organizer.service
+Config Source:    ~/.config/file-organizer/config.yaml
+Watch Directory:  ~/Downloads
+Conflict Mode:    numeric
+Log File:         ~/.local/state/file-organizer/file-organizer.log
+Categories (10):
+  • PDFs           -> PDFs/ [.pdf]
+  • Documents      -> Documents/ [.doc, .docx, .odt, .rtf, .txt, .md, ...]
+  • Spreadsheets   -> Spreadsheets/ [.xlsx, .xls, .csv, .tsv, .ods, .numbers]
+  • Images         -> Images/ [.jpg, .jpeg, .png, .gif, .svg, .webp, ...]
+  • Videos         -> Videos/ [.mp4, .mkv, .avi, .mov, .flv, .wmv, ...]
+  • Audio          -> Audio/ [.mp3, .wav, .ogg, .flac, .aac, .m4a, ...]
+  • Archives       -> Archives/ [.zip, .tar.gz, .tar.bz2, .tar.xz, ...]
+  • Installers     -> Installers/ [.deb, .appimage, .rpm, .sh, .run, ...]
+  • Code           -> Code/ [.py, .js, .ts, .jsx, .tsx, .html, ...]
+```
+
+```bash
 # Perform a one-time scan and organize all files in ~/Downloads
 file-organizer scan
 

@@ -51,7 +51,7 @@ echo -e "${GREEN}✔${RESET} Virtual environment ready."
 
 # 4. Install file-organizer package
 echo -e "Installing file-organizer dependencies and package..."
-"${VENV_DIR}/bin/pip" install --quiet "${SCRIPT_DIR}"
+"${VENV_DIR}/bin/pip" install --quiet -e "${SCRIPT_DIR}"
 echo -e "${GREEN}✔${RESET} Package installed into virtual environment."
 
 # 5. Initialize configuration
